@@ -1,0 +1,17 @@
+
+body {
+    background-image: url("https://corretor.krisleygomes.com.br/wp-content/uploads/2021/06/avaliacao-imoveis.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+}
+.form-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+   max-height: 80vh; 
+    overflow-y: auto; 
+}
