@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@4.6.0/minty/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename= 'index.css')}}">
+
+    <title>Previsão de Preço de Imóveis</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="form-card">
+                <h2 class="mb-4 text-center">Previsão de Preço de Imóveis</h2>
+                <form method="POST" action="/">
+                  
+                    <div class="form-group">
+                        <label for="Cidade_encoded">Cidade:</label>
+                        <select class="form-control" id="Cidade_encoded" name="Cidade_encoded">
+                            {% for key, value in cidade_options.items() %}
+                            <option value="{{ value }}">{{ key }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="Bairro_encoded">Bairro:</label>
+                        <select class="form-control" id="Bairro_encoded" name="Bairro_encoded">
+                            {% for key, value in bairro_options.items() %}
+                            <option value="{{ value }}">{{ key }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="Tipo_Imovel_encoded">Tipo de Imóvel:</label>
+                        <select class="form-control" id="Tipo_Imovel_encoded" name="Tipo_Imovel_encoded">
+                            {% for key, value in tipo_imovel_options.items() %}
+                            <option value="{{ value }}">{{ key }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="Andar_encoded">Andar:</label>
+                        <select class="form-control" id="Andar_encoded" name="Andar_encoded">
+                            {% for key, value in andar_options.items() %}
+                            <option value="{{ value }}">{{ key }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="Status_encoded">Status:</label>
+                        <select class="form-control" id="Status_encoded" name="Status_encoded">
+                              {% for key, value in status_options.items() %}
+                              <option value="{{ value }}">{{ key }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                  
+                    <div class="form-group">
+                        <label for="Area">Área (m²):</label>
+                        <input type="text" class="form-control" id="Area" name="Area"  min="50" max="50000" value="100">
+                    </div>
+                    <div class="form-group">
+                        <label for="Valor_M">Valor do m²:</label>
+                        <input type="text" class="form-control" id="Valor_M" name="Valor_M" min="0" max="100000" value="2000">
+                    </div>
+                    <div class="form-group">
+                        <label for="Beira_Mar">Beira Mar:</label>
+                        <select class="form-control" id="Beira_Mar" name="Beira_Mar">
+                            <option value="0">Não</option>
+                            <option value="1">Sim</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="Closet">Closet:</label>
+                        <select class="form-control" id="Closet" name="Closet">
+                            <option value="0">Não</option>
+                            <option value="1">Sim</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="Qtde_Quartos">Quartos:</label>
+                        <input type="text" class="form-control" id="Qtde_Quartos" name="Qtde_Quartos" min="0" max="100" value="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="Qtde_Suites">Suítes:</label>
+                        <input type="text" class="form-control" id="Qtde_Suites" name="Qtde_Suites" min="0" max="10" value="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="WC">WC:</label>
+                        <input type="text" class="form-control" id="WC" name="WC" min="0" max="10" value="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="DCE">DCE:</label>
+                        <input type="text" class="form-control" id="DCE" name="DCE"  min="0" max="10" value="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="Vaga_Garagem">Vaga de Garagem:</label>
+                        <input type="text" class="form-control" id="Vaga_Garagem" name="Vaga_Garagem" min="0" max="10" value="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="Elevador">Elevador:</label>
+                        <select class="form-control" id="Elevador" name="Elevador">
+                            <option value="0">Não</option>
+                            <option value="1">Sim</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="Portaria_24h">Portaria 24h:</label>
+                        <select class="form-control" id="Portaria_24h" name="Portaria_24h">
+                            <option value="0">Não</option>
+                            <option value="1">Sim</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="Gerador">Gerador:</label>
+                        <select class="form-control" id="Gerador" name="Gerador">
+                            <option value="0">Não</option>
+                            <option value="1">Sim</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="Central_Gas">Central de Gás:</label>
+                        <select class="form-control" id="Central_Gas" name="Central_Gas">
+                            <option value="0">Não</option>
+                            <option value="1">Sim</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="Bicicletario">Bicicletário:</label>
+                        <select class="form-control" id="Bicicletario" name="Bicicletario">
+                            <option value="0">Não</option>
+                            <option value="1">Sim</option>
+                        </select>
+                    </div>
+                  
+
+                  
+                    <button type="submit" class="btn btn-primary btn-block mt-4">Calcular Preço</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+    {% if predicted_price %}
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-6">
+            <div class="alert alert-success">
+                <h4 class="text-center">Preço Previsto:</h4>
+                <p class="text-center">{{ predicted_price }}</p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
